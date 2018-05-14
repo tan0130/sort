@@ -8,15 +8,18 @@ public class Sort_Demo {
         int[] arr = {1,23,23,45,45,23,456,34};
 
         // 冒泡排序
-        //bubbleSort(arr);
+        bubbleSort(arr);
+        System.out.println();
 
         // 快速排序
-        /*System.out.println("快速排序后的数组为:");
+        System.out.println("快速排序后的数组为:");
         quickSort(0, arr.length - 1, arr);
-        printArr(arr);*/
+        printArr(arr);
+        System.out.println();
 
         // 选择排序
-        //selectSort(arr);
+        selectSort(arr);
+        System.out.println();
 
         // 插入排序
         insertSort(arr);
