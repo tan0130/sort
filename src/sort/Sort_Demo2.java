@@ -106,7 +106,7 @@ public class Sort_Demo2 {
         printArr(arr);
     }
 
-    // 插入排序：数组从左向右选取小区姜，将后面的元素插入到小区间，再将小区间的数值进行排序
+    // 插入排序：数组从左向右选取小区间，将后面的元素插入到小区间，再将小区间的数值进行排序
     public static void insertSort(int[] arr) {
         int currentElem = 0, j = 0;
         for (int i = 1; i < arr.length; i++) {
