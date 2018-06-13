@@ -10,8 +10,9 @@ package sort;
  **/
 public class Swap {
     public static void main(String[] args) {
-        int a = 2, b = 4;
-        swap(a, b);
+        /*int a = 2, b = 4;
+        swap(a, b);*/
+        System.out.println("结果为：" + testTry());
     }
 
     /**
@@ -28,5 +29,17 @@ public class Swap {
         b = a ^ b;
         a = a ^ b;
         System.out.println("交换前的数值：a=" + a + "... b=" + b);
+    }
+
+    private static int testTry() {
+        int x = 1;
+        try {
+            System.out.println("try里面的x:" + x);
+            return x;
+        } finally {
+            System.out.println("进入finally块...");
+            ++x;
+            System.out.println("finally块的x为：" + x);
+        }
     }
 }
