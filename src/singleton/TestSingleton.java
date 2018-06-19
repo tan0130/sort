@@ -2,38 +2,46 @@ package singleton;
 
 /**
  * create by tan on 2018/6/13
- * 测试单例模式，使用懒汉式实现线程安全的方式二：双重检测锁的方式
+ * 单例模式
  **/
 public class TestSingleton {
-    String name = "";
-    private TestSingleton() {}
+    // 懒汉式
+    private TestSingleton() { }
+    private static TestSingleton instance;
 
-    private static volatile TestSingleton instance = null;
+    // 线程不安全
+    /*public static TestSingleton getInstance() {
+        if (null != instance) {
+            instance = new TestSingleton();
+        }
+        return instance;
+    }*/
 
-    public static TestSingleton getInstance() {
-        if (instance == null) {
-            synchronized (TestSingleton.class) {
-                if (instance == null) {
+    // 线程安全，在方法上加上synchronized关键字，性能不好
+    /*public synchronized static TestSingleton getInstance() {
+        if (null != instance) {
+            instance = new TestSingleton();
+        }
+        return instance;
+    }*/
+
+    // 线程安全，双重锁检测机制
+    /*public  static TestSingleton getInstance() {
+        if (null != instance) {
+            synchronized(TestSingleton.class) {
+                if (null != instance) {
                     instance = new TestSingleton();
                 }
             }
         }
         return instance;
-    }
+    }*/
 
-    public String getName() {
-        return name;
+    // 线程安全，静态内部类,不会出现性能损耗
+    private static class LayHolder {
+        private static final TestSingleton INSTANCE = new TestSingleton();
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void printMsg(String name) {
-        System.out.println("the name is:" + name);
-    }
-
-    public static void main(String[] args) {
-        
+    private static final TestSingleton getInstance() {
+        return LayHolder.INSTANCE;
     }
 }
