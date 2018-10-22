@@ -13,6 +13,8 @@ import java.util.Arrays;
  * 计数排序是一种非常快捷的稳定性强的排序方法，时间复杂度O(n+k),其中n为要排序的数的个数，k为要排序的数的组大值。
  * 计数排序对一定量的整数排序时候的速度非常快，一般快于其他排序算法。但计数排序局限性比较大，只限于对整数进行排序。
  * 计数排序是消耗空间发杂度来获取快捷的排序方法，其空间发展度为O（K）同理K为要排序的最大值
+ * 局限：数列最大值和最小值差距过大、数列元素不是整数
+ *
  **/
 public class Sort_Demo16 {
     public static void main(String[] args) {
@@ -24,22 +26,22 @@ public class Sort_Demo16 {
         System.out.println();
 
         // 冒泡排序
-        bubbleSort(arr);
-        System.out.println();
+//        bubbleSort(arr);
+//        System.out.println();
 
         // 快速排序
-        System.out.println("快速排序后的数组为：");
-        quickSort(0, arr.length - 1, arr);
-        printArr(arr);
-        System.out.println();
+//        System.out.println("快速排序后的数组为：");
+//        quickSort(0, arr.length - 1, arr);
+//        printArr(arr);
+//        System.out.println();
 
         // 选择排序
-        selectSort(arr);
-        System.out.println();
+//        selectSort(arr);
+//        System.out.println();
 
         // 插入排序
-        insertSort(arr);
-        System.out.println();
+//        insertSort(arr);
+//        System.out.println();
 
         // 计数排序
         countSort(arr);
@@ -177,12 +179,12 @@ public class Sort_Demo16 {
         // 最大最小元素之间范围【min, max】的长度
         int r = max - min + 1;
         // 1、计算频率
-        int[] count = new int[r + 1];
+        int[] count = new int[r + 1]; // 数组每一个下标位置的值，代表了对应整数出现的次数
         for (int i: arr) {
             // 使用加 1 后的索引，有重复值就自增
             count[i - min + 1]++;
         }
-        // 2、频率 -> 元素的开始索引
+        // 2、频率 -> 元素的开始索引,后面的元素等于前面的元素之和
         for (int i = 0; i < r; i++) {
             count[i + 1] += count[i];
         }
